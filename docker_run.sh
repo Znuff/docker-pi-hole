@@ -4,12 +4,10 @@
 
 docker run -d \
     --name pihole \
-    -p 53:53/tcp -p 53:53/udp \
-    -p 80:80 \
-    -p 443:443 \
-    -e TZ="America/Chicago" \
-    -v "$(pwd)/etc-pihole/:/etc/pihole/" \
-    -v "$(pwd)/etc-dnsmasq.d/:/etc/dnsmasq.d/" \
+    -e TZ="Europe/Bucharest" \
+    -e WEBPASSWORD="password_here" \
+    -v "/opt/pihole/pihole:/etc/pihole/" \
+    -v "/opt/pihole/dnsmasq:/etc/dnsmasq.d/" \
     --dns=127.0.0.1 --dns=1.1.1.1 \
     --restart=unless-stopped \
     pihole/pihole:latest
